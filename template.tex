@@ -383,12 +383,12 @@ This class calculates the cluatering measures for a single page. Currently it ca
     \centering
     \begin{minipage}{0.45\textwidth}
         \centering
-        \includegraphics[width=0.9\textwidth]{rand_k0iter_lda.pdf}
+        \includegraphics[width=0.9\textwidth]{fig/rand_k0iter_lda.pdf}
         \caption{Minimum no. of iterations of LDA topic modeling for RAND}
     \end{minipage}\hfill
     \begin{minipage}{0.45\textwidth}
         \centering
-        \includegraphics[width=0.9\textwidth]{purity_k0iter_lda.pdf}
+        \includegraphics[width=0.9\textwidth]{fig/purity_k0iter_lda.pdf}
         \caption{Minimum no. of iterations of LDA topic modeling for Purity}
     \end{minipage}
 \end{figure}
@@ -396,16 +396,16 @@ This class calculates the cluatering measures for a single page. Currently it ca
     \centering
     \begin{minipage}{0.45\textwidth}
         \centering
-        \includegraphics[width=0.9\textwidth]{numq_k0iter_lda.pdf}
+        \includegraphics[width=0.9\textwidth]{fig/numq_k0iter_lda.pdf}
         \caption{Minimum no. of iterations of LDA topic modeling for numq measures}
     \end{minipage}\hfill
     \begin{minipage}{0.45\textwidth}
         \centering
-        \includegraphics[width=0.9\textwidth]{map_rprec_k0iter_lda.pdf}
+        \includegraphics[width=0.9\textwidth]{fig/map_rprec_k0iter_lda.pdf}
         \caption{Minimum no. of iterations of LDA topic modeling for MAP and Rprec}
     \end{minipage}
 \end{figure}
-\subsection{Minimum no. of iterations} Three sets of experiments were carried out for each algorithm to get the minimum number of iterations needed of the respective algorithm to reach sufficiently close to the highest result it can achieve. Each set of experiments were done using 4 set of measures; Adjusted RAND index, Purity, four numq measures from trec\_eval tool and precision measures. The plots of this study for LDA algorithm are shown in figures 3 to 6 and for Unigram topic model algorithm are shown in figures 7 to 10. Iteresting point to note here is that for Unigram topic modeling none of the measures seems to be affected by number of iterations. Obtained results are presented in Table 1.
+\subsection{Minimum no. of iterations} Three sets of experiments were carried out for each algorithm to get the minimum number of iterations needed of the respective algorithm to reach sufficiently close to the highest result it can achieve. Each set of experiments were done using 4 set of measures; Adjusted RAND index, Purity, four numq measures from trec\_eval tool and precision measures. The plots of this study for LDA algorithm are shown in figures 3 to 6 and for Unigram topic model algorithm are shown in figures 7 to 11.
 % For tables use
 \begin{table}
 % table caption is above the table
@@ -427,12 +427,12 @@ NE = No Effect
     \centering
     \begin{minipage}{0.45\textwidth}
         \centering
-        \includegraphics[width=0.9\textwidth]{rand_k0iter_umm.pdf}
+        \includegraphics[width=0.9\textwidth]{fig/rand_k0iter_umm.pdf}
         \caption{Minimum no. of iterations of Unigram topic modeling for RAND}
     \end{minipage}\hfill
     \begin{minipage}{0.45\textwidth}
         \centering
-        \includegraphics[width=0.9\textwidth]{purity_k0iter_umm.pdf}
+        \includegraphics[width=0.9\textwidth]{fig/purity_k0iter_umm.pdf}
         \caption{Minimum no. of iterations of Unigram topic modeling for Purity}
     \end{minipage}
 \end{figure}
@@ -440,78 +440,169 @@ NE = No Effect
     \centering
     \begin{minipage}{0.45\textwidth}
         \centering
-        \includegraphics[width=0.9\textwidth]{numq_k0iter_umm.pdf}
+        \includegraphics[width=0.9\textwidth]{fig/num_rel_k0iter_umm.pdf}
         \caption{Minimum no. of iterations of Unigram topic modeling for numq measures}
     \end{minipage}\hfill
     \begin{minipage}{0.45\textwidth}
         \centering
-        \includegraphics[width=0.9\textwidth]{prec_k0iter_umm.pdf}
-        \caption{Minimum no. of iterations of Unigram topic modeling for MAP and Rprec}
+        \includegraphics[width=0.9\textwidth]{fig/rprec_k0iter_umm.pdf}
+        \caption{Minimum no. of iterations of Unigram topic modeling for Rprec}
+    \end{minipage}
+\end{figure}
+\begin{figure}
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{fig/map_k0iter_umm.pdf}
+        \caption{Minimum no. of iterations of Unigram topic modeling for MAP}
     \end{minipage}
 \end{figure}
 
-\subsection{Hyper parameter learning} LDA algorithm has two hyperparameters, $ \alpha$ and $ \beta$. We have to learn the optimum value for both of these parameters for our particular corpus using the evaluation framework. Also for Unigram topic modeling algorithm we have the smoothing factor (inverse temperature) $ \lambda$. To get the optimum values of these variables we run the algorithm over a sufficiently large range of a parameter while keeping rest at a constant value. Then we measure various evaluation metrics and find out a narrow range of parameter values for which we are getting sufficiently good measures. 
-\paragraph{Optimum alphaSum and betaSum for LDA}Figures from 9 to 12 plots result obtained from the experiments to learn optimum alphaSum and betaSum for LDA algorithm. From these charts we found optimum range for alphaSum to be 0.8 to 1.2 and optimum range for betaSum to be 100 to 300. For subsequent experiments with LDA algorithm, we chose alphaSum and betaSum values to be 1.0 and 260.
-\paragraph{Optimum lambda and betaSum for Unigram topic model}
+\subsection{Hyper parameter learning} LDA algorithm has two hyperparameters, $ \alpha$ and $ \beta$. We have to learn the optimum value for both of these parameters for our particular corpus using the evaluation framework. For Unigram topic model we have to learn only for $\beta$. To get the optimum values of these variables we run the algorithm over a sufficiently large range of a parameter while keeping rest at a constant value. Then we measure various evaluation metrics and find out a narrow range of parameter values for which we are getting sufficiently good measures. 
+\paragraph{Optimum $\alpha Sum$ and $\beta Sum$ for LDA}Figures from 9 to 12 plots result obtained from the experiments to learn optimum $\alpha Sum$ and $\beta Sum$ for LDA algorithm. From these charts we found optimum range for $\alpha Sum$ to be 0.8 to 1.2 and optimum range for $\beta Sum$ to be 100 to 300. For subsequent experiments with LDA algorithm, we chose $\alpha Sum$ and $\beta Sum$ values to be 1.0 and 260.
+
 \begin{figure}
     \centering
     \begin{minipage}{0.45\textwidth}
         \centering
-        \includegraphics[width=0.9\textwidth]{alphaSum_rand_lda.pdf}
-        \caption{Learning optimum alphaSum of LDA for RAND with betaSum, iterations fixed}
+        \includegraphics[width=0.9\textwidth]{fig/alphaSum_rand_lda.pdf}
+        \caption{Learning optimum $\alpha Sum$ of LDA for RAND with $\beta Sum$, iterations fixed}
     \end{minipage}\hfill
     \begin{minipage}{0.45\textwidth}
         \centering
-        \includegraphics[width=0.9\textwidth]{alphaSum_purity_lda.pdf}
-        \caption{Learning optimum alphaSum of LDA for Purity with betaSum, iterations fixed}
+        \includegraphics[width=0.9\textwidth]{fig/alphaSum_purity_lda.pdf}
+        \caption{Learning optimum $\alpha Sum$ of LDA for Purity with $\beta Sum$, iterations fixed}
     \end{minipage}
 \end{figure}
 \begin{figure}
     \centering
     \begin{minipage}{0.45\textwidth}
         \centering
-        \includegraphics[width=0.9\textwidth]{betaSum_rand_lda.pdf}
-        \caption{Learning optimum betaSum of LDA for RAND with alphaSum, iterations fixed}
+        \includegraphics[width=0.9\textwidth]{fig/betaSum_rand_lda.pdf}
+        \caption{Learning optimum $\beta Sum$ of LDA for RAND with $\alpha Sum$, iterations fixed}
     \end{minipage}\hfill
     \begin{minipage}{0.45\textwidth}
         \centering
-        \includegraphics[width=0.9\textwidth]{betaSum_purity_lda.pdf}
-        \caption{Learning optimum betaSum of LDA for Purity with alphaSum, iterations fixed}
+        \includegraphics[width=0.9\textwidth]{fig/betaSum_purity_lda.pdf}
+        \caption{Learning optimum $\beta Sum$ of LDA for Purity with $\alpha Sum$, iterations fixed}
     \end{minipage}
 \end{figure}
+
+\paragraph{Optimum $\beta Sum$ for Unigram topic model} As we have figued out from the iterations experiments, adding smoothing factor to Unigram model did not affect any measures when compared to it's no-smoothing counterpart. Hence, from here onwards we will only use no-smoothing version of the Unigram model. Figure to presents the RAND index and purity plots for range of $\beta Sum$ values for Unigram model. Based on these plots, we have chosen $\beta Sum = 260$ as the optimum value for subsequent experiments with Unigram model.
+
+\begin{figure}
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{fig/betaSum_rand_umm1.pdf}
+        \caption{Learning optimum $\beta Sum$ of UMM for RAND with 100 iterations (long range)}
+    \end{minipage}\hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{fig/betaSum_purity_umm1.pdf}
+        \caption{Learning optimum $\beta Sum$ of UMM for Purity with 100 iterations (long range)}
+    \end{minipage}
+\end{figure}
+\begin{figure}
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{fig/betaSum_rand_umm2.pdf}
+        \caption{Learning optimum $\beta Sum$ of UMM for RAND with 100 iterations (short range)}
+    \end{minipage}\hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{fig/betaSum_purity_umm2.pdf}
+        \caption{Learning optimum $\beta Sum$ of UMM for Purity with 100 iterations (short range)}
+    \end{minipage}
+\end{figure}
+
 \subsection{KMeans clustering results} plots go here
-\subsection{Comparison of results with true no. of sections and k} After we have decided the optimum values of hyperparameters for all the algorithms, we compare the measures from different algorithms by varying $k$ and also at $k = $true no. of sections. This will give us an idea about the effectiveness of each algorithm for the task.
+\subsection{Comparison of algorithms with varying k} After we have decided the optimum values of hyperparameters for all the algorithms, we compare the measures from different algorithms by varying $k$ and also at $k = $true no. of sections. This will give us an idea about the effectiveness of each algorithm for the task.
 
 \begin{figure}
+\label{fig:cl_cmp}
     \centering
     \begin{minipage}{0.45\textwidth}
         \centering
-        \includegraphics[width=0.9\textwidth]{rand_comp.pdf}
+        \includegraphics[width=0.9\textwidth]{fig/rand_comp.pdf}
         \caption{Comparison of RAND index vs. k}
     \end{minipage}\hfill
     \begin{minipage}{0.45\textwidth}
         \centering
-        \includegraphics[width=0.9\textwidth]{purity_comp.pdf}
+        \includegraphics[width=0.9\textwidth]{fig/purity_comp.pdf}
         \caption{Comparison of purity vs. k}
     \end{minipage}
 \end{figure}
 \begin{figure}
+\label{fig:clk0_cmp}
     \centering
     \begin{minipage}{0.45\textwidth}
         \centering
-        \includegraphics[width=0.9\textwidth]{rand_k0_comp.pdf}
+        \includegraphics[width=0.9\textwidth]{fig/rand_k0_comp.pdf}
         \caption{Comparison of RAND index at true no. of sections}
     \end{minipage}\hfill
     \begin{minipage}{0.45\textwidth}
         \centering
-        \includegraphics[width=0.9\textwidth]{purity_k0_comp.pdf}
-        \caption{Comparison of RAND index at true no. of sections}
+        \includegraphics[width=0.9\textwidth]{fig/purity_k0_comp.pdf}
+        \caption{Comparison of Purity at true no. of sections}
     \end{minipage}
 \end{figure}
 
+\begin{figure}
+\label{fig:mp_cmp}
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{fig/map_comp.pdf}
+        \caption{Comparison of MAP vs. k}
+    \end{minipage}\hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{fig/map_k0_comp.pdf}
+        \caption{Comparison of MAP at true no. of sections}
+    \end{minipage}
+\end{figure}
+\begin{figure}
+\label{fig:rp_cmp}
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{fig/rprec_comp.pdf}
+        \caption{Comparison of Rprec vs. k}
+    \end{minipage}\hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{fig/rprec_k0_comp.pdf}
+        \caption{Comparison of Rprec at true no. of sections}
+    \end{minipage}
+\end{figure}
+\begin{figure}
+\label{fig:bp_cmp}
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{fig/bpref_comp.pdf}
+        \caption{Comparison of bpref vs. k}
+    \end{minipage}\hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{fig/bpref_k0_comp.pdf}
+        \caption{Comparison of bpref at true no. of sections}
+    \end{minipage}
+\end{figure}
+
+Figure \ref{fig:cl_cmp} to \ref{fig:clk0_cmp} presents the comparison of 3 different algorithms based on clustering measures. Figure \ref{fig:mp_cmp} to \ref{fig:bp_cmp} presents the same comparison based on treceval measures.
 \subsection{Comparison of results with variations of algo} plots go here
-\subsection{Results in whole corpus mode} plots go here
 \subsection{Difficulty analysis of the corpus} plots go here
+
+\section{Analysis of results}
+In previous section we have presented results from three different implementation of clustering and assignment models which are LDA topic modeling, KMeans clustering and Unigram mixture model. Based on these results we can gain following insights in context of our specific experimental setup.
+\paragraph{} From RAND index comparisons in Figure \ref{fig:cl_cmp} and \ref{fig:clk0_cmp} it becomes evident that in terms of cluster similarity with that from the ground truth, Unigram model performs better than the rest. Although the purity comparison shows that KMeans algorithm constantly achieves high purity for high k value but we have to remember that it only means that the clusters are more specific or pure and does not signify anything regarding the overall quality of the clustering.
+\paragraph{} 
+
+\section{Future scope} future scope goes here.
+\section{Conclusion} conclude the paper.
 %\begin{acknowledgements}
 %If you'd like to thank anyone, place your comments here
 %and remove the percent signs.

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2015.12.2)  28 JUL 2017 22:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2015.12.2)  30 JUL 2017 22:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -407,178 +407,342 @@ Overfull \hbox (64.87132pt too wide) in paragraph at lines 375--376
 in-dex ($\OML/cmm/m/it/10 calculateRANDPerPage$\OT1/cmr/m/n/10 )
  []
 
-[5] [6] [7] [8] <rand_k0iter_lda.pdf, id=50, 654.40242pt x 267.24393pt>
-File: rand_k0iter_lda.pdf Graphic file (type pdf)
+[5] [6] [7] [8] <fig/rand_k0iter_lda.pdf, id=50, 654.40242pt x 267.24393pt>
+File: fig/rand_k0iter_lda.pdf Graphic file (type pdf)
 
-<use rand_k0iter_lda.pdf>
-Package pdftex.def Info: rand_k0iter_lda.pdf used on input line 386.
+<use fig/rand_k0iter_lda.pdf>
+Package pdftex.def Info: fig/rand_k0iter_lda.pdf used on input line 386.
 (pdftex.def)             Requested size: 136.88814pt x 55.90268pt.
 
-<purity_k0iter_lda.pdf, id=51, 551.95651pt x 273.2717pt>
-File: purity_k0iter_lda.pdf Graphic file (type pdf)
+<fig/purity_k0iter_lda.pdf, id=51, 551.95651pt x 273.2717pt>
+File: fig/purity_k0iter_lda.pdf Graphic file (type pdf)
 
-<use purity_k0iter_lda.pdf>
-Package pdftex.def Info: purity_k0iter_lda.pdf used on input line 391.
+<use fig/purity_k0iter_lda.pdf>
+Package pdftex.def Info: fig/purity_k0iter_lda.pdf used on input line 391.
 (pdftex.def)             Requested size: 136.88814pt x 67.7715pt.
 
-<numq_k0iter_lda.pdf, id=52, 482.58896pt x 258.22145pt>
-File: numq_k0iter_lda.pdf Graphic file (type pdf)
+<fig/numq_k0iter_lda.pdf, id=52, 482.58896pt x 258.22145pt>
+File: fig/numq_k0iter_lda.pdf Graphic file (type pdf)
 
-<use numq_k0iter_lda.pdf>
-Package pdftex.def Info: numq_k0iter_lda.pdf used on input line 399.
+<use fig/numq_k0iter_lda.pdf>
+Package pdftex.def Info: fig/numq_k0iter_lda.pdf used on input line 399.
 (pdftex.def)             Requested size: 136.88814pt x 73.2432pt.
 
-<map_rprec_k0iter_lda.pdf, id=53, 554.07pt x 243.15843pt>
-File: map_rprec_k0iter_lda.pdf Graphic file (type pdf)
+<fig/map_rprec_k0iter_lda.pdf, id=53, 554.07pt x 243.15843pt>
+File: fig/map_rprec_k0iter_lda.pdf Graphic file (type pdf)
 
-<use map_rprec_k0iter_lda.pdf>
-Package pdftex.def Info: map_rprec_k0iter_lda.pdf used on input line 404.
+<use fig/map_rprec_k0iter_lda.pdf>
+Package pdftex.def Info: fig/map_rprec_k0iter_lda.pdf used on input line 404.
 (pdftex.def)             Requested size: 136.88814pt x 60.07336pt.
 
 Overfull \hbox (81.6744pt too wide) in paragraph at lines 415--424
 [][] 
  []
 
-[9] <rand_k0iter_umm.pdf, id=57, 446.5242pt x 271.01927pt>
-File: rand_k0iter_umm.pdf Graphic file (type pdf)
+[9] <fig/rand_k0iter_umm.pdf, id=57, 454.83286pt x 270.25142pt>
+File: fig/rand_k0iter_umm.pdf Graphic file (type pdf)
 
-<use rand_k0iter_umm.pdf>
-Package pdftex.def Info: rand_k0iter_umm.pdf used on input line 430.
-(pdftex.def)             Requested size: 136.88814pt x 83.08463pt.
+<use fig/rand_k0iter_umm.pdf>
+Package pdftex.def Info: fig/rand_k0iter_umm.pdf used on input line 430.
+(pdftex.def)             Requested size: 136.88814pt x 81.33583pt.
 
-<purity_k0iter_umm.pdf, id=58, 554.17923pt x 271.00647pt>
-File: purity_k0iter_umm.pdf Graphic file (type pdf)
+<fig/purity_k0iter_umm.pdf, id=58, 436.03543pt x 267.24393pt>
+File: fig/purity_k0iter_umm.pdf Graphic file (type pdf)
 
-<use purity_k0iter_umm.pdf>
-Package pdftex.def Info: purity_k0iter_umm.pdf used on input line 435.
-(pdftex.def)             Requested size: 136.88814pt x 66.94093pt.
+<use fig/purity_k0iter_umm.pdf>
+Package pdftex.def Info: fig/purity_k0iter_umm.pdf used on input line 435.
+(pdftex.def)             Requested size: 136.88814pt x 83.89684pt.
 
-<numq_k0iter_umm.pdf, id=59, 511.15968pt x 295.84958pt>
-File: numq_k0iter_umm.pdf Graphic file (type pdf)
+<fig/num_rel_k0iter_umm.pdf, id=59, 457.72205pt x 268.75406pt>
+File: fig/num_rel_k0iter_umm.pdf Graphic file (type pdf)
 
-<use numq_k0iter_umm.pdf>
-Package pdftex.def Info: numq_k0iter_umm.pdf used on input line 443.
-(pdftex.def)             Requested size: 136.88814pt x 79.22588pt.
+<use fig/num_rel_k0iter_umm.pdf>
+Package pdftex.def Info: fig/num_rel_k0iter_umm.pdf used on input line 443.
+(pdftex.def)             Requested size: 136.88814pt x 80.37257pt.
 
-<prec_k0iter_umm.pdf, id=60, 512.63521pt x 294.34969pt>
-File: prec_k0iter_umm.pdf Graphic file (type pdf)
+<fig/rprec_k0iter_umm.pdf, id=60, 459.98651pt x 271.76155pt>
+File: fig/rprec_k0iter_umm.pdf Graphic file (type pdf)
 
-<use prec_k0iter_umm.pdf>
-Package pdftex.def Info: prec_k0iter_umm.pdf used on input line 448.
-(pdftex.def)             Requested size: 136.88814pt x 78.59964pt.
- [10 <./rand_k0iter_lda.pdf> <./purity_k0iter_lda.pdf
+<use fig/rprec_k0iter_umm.pdf>
+Package pdftex.def Info: fig/rprec_k0iter_umm.pdf used on input line 448.
+(pdftex.def)             Requested size: 136.88814pt x 80.8739pt.
 
-pdfTeX warning: /usr/bin/pdflatex (file ./purity_k0iter_lda.pdf): PDF inclusion
-: multiple pdfs with page group included in a single page
-> <./numq_k0iter_lda.pdf
+<fig/map_k0iter_umm.pdf, id=61, 445.68427pt x 273.2589pt>
+File: fig/map_k0iter_umm.pdf Graphic file (type pdf)
 
-pdfTeX warning: /usr/bin/pdflatex (file ./numq_k0iter_lda.pdf): PDF inclusion: 
-multiple pdfs with page group included in a single page
-> <./map_rprec_k0iter_lda.pdf
+<use fig/map_k0iter_umm.pdf>
+Package pdftex.def Info: fig/map_k0iter_umm.pdf used on input line 456.
+(pdftex.def)             Requested size: 136.88814pt x 83.92966pt.
+ [10 <./fig/rand_k0iter_lda.pdf> <./fig/purity_k0iter_lda.pdf
 
-pdfTeX warning: /usr/bin/pdflatex (file ./map_rprec_k0iter_lda.pdf): PDF inclus
-ion: multiple pdfs with page group included in a single page
-> <./rand_k0iter_umm.pdf
+pdfTeX warning: /usr/bin/pdflatex (file ./fig/purity_k0iter_lda.pdf): PDF inclu
+sion: multiple pdfs with page group included in a single page
+> <./fig/numq_k0iter_lda.pdf
 
-pdfTeX warning: /usr/bin/pdflatex (file ./rand_k0iter_umm.pdf): PDF inclusion: 
-multiple pdfs with page group included in a single page
-> <./purity_k0iter_umm.pdf
+pdfTeX warning: /usr/bin/pdflatex (file ./fig/numq_k0iter_lda.pdf): PDF inclusi
+on: multiple pdfs with page group included in a single page
+> <./fig/map_rprec_k0iter_lda.pdf
 
-pdfTeX warning: /usr/bin/pdflatex (file ./purity_k0iter_umm.pdf): PDF inclusion
-: multiple pdfs with page group included in a single page
->] <alphaSum_rand_lda.pdf, id=107, 497.02408pt x 259.71881pt>
-File: alphaSum_rand_lda.pdf Graphic file (type pdf)
+pdfTeX warning: /usr/bin/pdflatex (file ./fig/map_rprec_k0iter_lda.pdf): PDF in
+clusion: multiple pdfs with page group included in a single page
+> <./fig/rand_k0iter_umm.pdf
 
-<use alphaSum_rand_lda.pdf>
-Package pdftex.def Info: alphaSum_rand_lda.pdf used on input line 460.
+pdfTeX warning: /usr/bin/pdflatex (file ./fig/rand_k0iter_umm.pdf): PDF inclusi
+on: multiple pdfs with page group included in a single page
+> <./fig/purity_k0iter_umm.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./fig/purity_k0iter_umm.pdf): PDF inclu
+sion: multiple pdfs with page group included in a single page
+>] <fig/alphaSum_rand_lda.pdf, id=108, 497.02408pt x 259.71881pt>
+File: fig/alphaSum_rand_lda.pdf Graphic file (type pdf)
+
+<use fig/alphaSum_rand_lda.pdf>
+Package pdftex.def Info: fig/alphaSum_rand_lda.pdf used on input line 468.
 (pdftex.def)             Requested size: 136.88814pt x 71.5279pt.
 
-<alphaSum_purity_lda.pdf, id=108, 431.38766pt x 262.72629pt>
-File: alphaSum_purity_lda.pdf Graphic file (type pdf)
+Underfull \hbox (badness 1024) in paragraph at lines 469--469
+[]\OT1/cmr/bx/n/8 Fig. 10|\OT1/cmr/m/n/8 Learning op-ti-mum $\OML/cmm/m/it/8 S
+um$ \OT1/cmr/m/n/8 of
+ []
 
-<use alphaSum_purity_lda.pdf>
-Package pdftex.def Info: alphaSum_purity_lda.pdf used on input line 465.
+<fig/alphaSum_purity_lda.pdf, id=109, 431.38766pt x 262.72629pt>
+File: fig/alphaSum_purity_lda.pdf Graphic file (type pdf)
+
+<use fig/alphaSum_purity_lda.pdf>
+Package pdftex.def Info: fig/alphaSum_purity_lda.pdf used on input line 473.
 (pdftex.def)             Requested size: 136.88814pt x 83.36856pt.
 
-<betaSum_rand_lda.pdf, id=109, 414.10272pt x 248.42813pt>
-File: betaSum_rand_lda.pdf Graphic file (type pdf)
+Underfull \hbox (badness 1024) in paragraph at lines 474--474
+[]\OT1/cmr/bx/n/8 Fig. 11|\OT1/cmr/m/n/8 Learning op-ti-mum $\OML/cmm/m/it/8 S
+um$ \OT1/cmr/m/n/8 of
+ []
 
-<use betaSum_rand_lda.pdf>
-Package pdftex.def Info: betaSum_rand_lda.pdf used on input line 473.
+<fig/betaSum_rand_lda.pdf, id=110, 414.10272pt x 248.42813pt>
+File: fig/betaSum_rand_lda.pdf Graphic file (type pdf)
+
+<use fig/betaSum_rand_lda.pdf>
+Package pdftex.def Info: fig/betaSum_rand_lda.pdf used on input line 481.
 (pdftex.def)             Requested size: 136.88814pt x 82.12178pt.
 
-<betaSum_purity_lda.pdf, id=110, 431.48927pt x 249.93375pt>
-File: betaSum_purity_lda.pdf Graphic file (type pdf)
+Underfull \hbox (badness 1092) in paragraph at lines 482--482
+[]\OT1/cmr/bx/n/8 Fig. 12|\OT1/cmr/m/n/8 Learning op-ti-mum $\OML/cmm/m/it/8 ^^
+LSum$ \OT1/cmr/m/n/8 of
+ []
 
-<use betaSum_purity_lda.pdf>
-Package pdftex.def Info: betaSum_purity_lda.pdf used on input line 478.
+<fig/betaSum_purity_lda.pdf, id=111, 431.48927pt x 249.93375pt>
+File: fig/betaSum_purity_lda.pdf Graphic file (type pdf)
+
+<use fig/betaSum_purity_lda.pdf>
+Package pdftex.def Info: fig/betaSum_purity_lda.pdf used on input line 486.
 (pdftex.def)             Requested size: 136.88814pt x 79.29015pt.
- [11 <./numq_k0iter_umm.pdf> <./prec_k0iter_umm.pdf
 
-pdfTeX warning: /usr/bin/pdflatex (file ./prec_k0iter_umm.pdf): PDF inclusion: 
-multiple pdfs with page group included in a single page
-> <./alphaSum_rand_lda.pdf
+Underfull \hbox (badness 1092) in paragraph at lines 487--487
+[]\OT1/cmr/bx/n/8 Fig. 13|\OT1/cmr/m/n/8 Learning op-ti-mum $\OML/cmm/m/it/8 ^^
+LSum$ \OT1/cmr/m/n/8 of
+ []
 
-pdfTeX warning: /usr/bin/pdflatex (file ./alphaSum_rand_lda.pdf): PDF inclusion
-: multiple pdfs with page group included in a single page
-> <./alphaSum_purity_lda.pdf
+[11 <./fig/num_rel_k0iter_umm.pdf> <./fig/rprec_k0iter_umm.pdf
 
-pdfTeX warning: /usr/bin/pdflatex (file ./alphaSum_purity_lda.pdf): PDF inclusi
-on: multiple pdfs with page group included in a single page
-> <./betaSum_rand_lda.pdf
+pdfTeX warning: /usr/bin/pdflatex (file ./fig/rprec_k0iter_umm.pdf): PDF inclus
+ion: multiple pdfs with page group included in a single page
+> <./fig/map_k0iter_umm.pdf
 
-pdfTeX warning: /usr/bin/pdflatex (file ./betaSum_rand_lda.pdf): PDF inclusion:
- multiple pdfs with page group included in a single page
-> <./betaSum_purity_lda.pdf
-
-pdfTeX warning: /usr/bin/pdflatex (file ./betaSum_purity_lda.pdf): PDF inclusio
+pdfTeX warning: /usr/bin/pdflatex (file ./fig/map_k0iter_umm.pdf): PDF inclusio
 n: multiple pdfs with page group included in a single page
->] <rand_comp.pdf, id=186, 516.44144pt x 288.3272pt>
-File: rand_comp.pdf Graphic file (type pdf)
- <use rand_comp.pdf>
-Package pdftex.def Info: rand_comp.pdf used on input line 489.
+> <./fig/alphaSum_rand_lda.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./fig/alphaSum_rand_lda.pdf): PDF inclu
+sion: multiple pdfs with page group included in a single page
+> <./fig/alphaSum_purity_lda.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./fig/alphaSum_purity_lda.pdf): PDF inc
+lusion: multiple pdfs with page group included in a single page
+>] <fig/betaSum_rand_umm1.pdf, id=165, 459.35934pt x 275.52411pt>
+File: fig/betaSum_rand_umm1.pdf Graphic file (type pdf)
+
+<use fig/betaSum_rand_umm1.pdf>
+Package pdftex.def Info: fig/betaSum_rand_umm1.pdf used on input line 497.
+(pdftex.def)             Requested size: 136.88814pt x 82.10712pt.
+
+Underfull \hbox (badness 1092) in paragraph at lines 498--498
+[]\OT1/cmr/bx/n/8 Fig. 14|\OT1/cmr/m/n/8 Learning op-ti-mum $\OML/cmm/m/it/8 ^^
+LSum$ \OT1/cmr/m/n/8 of
+ []
+
+<fig/betaSum_purity_umm1.pdf, id=166, 423.9061pt x 275.52411pt>
+File: fig/betaSum_purity_umm1.pdf Graphic file (type pdf)
+
+<use fig/betaSum_purity_umm1.pdf>
+Package pdftex.def Info: fig/betaSum_purity_umm1.pdf used on input line 502.
+(pdftex.def)             Requested size: 136.88814pt x 88.9725pt.
+
+Underfull \hbox (badness 1092) in paragraph at lines 503--503
+[]\OT1/cmr/bx/n/8 Fig. 15|\OT1/cmr/m/n/8 Learning op-ti-mum $\OML/cmm/m/it/8 ^^
+LSum$ \OT1/cmr/m/n/8 of
+ []
+
+<fig/betaSum_rand_umm2.pdf, id=167, 390.7185pt x 217.5628pt>
+File: fig/betaSum_rand_umm2.pdf Graphic file (type pdf)
+
+<use fig/betaSum_rand_umm2.pdf>
+Package pdftex.def Info: fig/betaSum_rand_umm2.pdf used on input line 510.
+(pdftex.def)             Requested size: 136.88814pt x 76.22447pt.
+
+Underfull \hbox (badness 1092) in paragraph at lines 511--511
+[]\OT1/cmr/bx/n/8 Fig. 16|\OT1/cmr/m/n/8 Learning op-ti-mum $\OML/cmm/m/it/8 ^^
+LSum$ \OT1/cmr/m/n/8 of
+ []
+
+
+Underfull \hbox (badness 1168) in paragraph at lines 511--511
+\OT1/cmr/m/n/8 UMM for RAND with 100 it-er-a-tions
+ []
+
+<fig/betaSum_purity_umm2.pdf, id=168, 379.6046pt x 218.31787pt>
+File: fig/betaSum_purity_umm2.pdf Graphic file (type pdf)
+
+<use fig/betaSum_purity_umm2.pdf>
+Package pdftex.def Info: fig/betaSum_purity_umm2.pdf used on input line 515.
+(pdftex.def)             Requested size: 136.88814pt x 78.72762pt.
+
+Underfull \hbox (badness 1092) in paragraph at lines 516--516
+[]\OT1/cmr/bx/n/8 Fig. 17|\OT1/cmr/m/n/8 Learning op-ti-mum $\OML/cmm/m/it/8 ^^
+LSum$ \OT1/cmr/m/n/8 of
+ []
+
+
+Underfull \hbox (badness 1590) in paragraph at lines 516--516
+\OT1/cmr/m/n/8 UMM for Pu-rity with 100 it-er-a-tions
+ []
+
+<fig/rand_comp.pdf, id=169, 516.44144pt x 288.3272pt>
+File: fig/rand_comp.pdf Graphic file (type pdf)
+ <use fig/rand_comp.pdf>
+Package pdftex.def Info: fig/rand_comp.pdf used on input line 528.
 (pdftex.def)             Requested size: 136.88814pt x 76.42393pt.
 
-<purity_comp.pdf, id=187, 517.21233pt x 303.38493pt>
-File: purity_comp.pdf Graphic file (type pdf)
- <use purity_comp.pdf>
-Package pdftex.def Info: purity_comp.pdf used on input line 494.
-(pdftex.def)             Requested size: 136.88814pt x 80.29477pt.
+<fig/purity_comp.pdf, id=170, 517.21233pt x 303.38493pt>
+File: fig/purity_comp.pdf Graphic file (type pdf)
 
-<rand_k0_comp.pdf, id=188, 317.69891pt x 213.78821pt>
-File: rand_k0_comp.pdf Graphic file (type pdf)
- <use rand_k0_comp.pdf>
-Package pdftex.def Info: rand_k0_comp.pdf used on input line 502.
+<use fig/purity_comp.pdf>
+Package pdftex.def Info: fig/purity_comp.pdf used on input line 533.
+(pdftex.def)             Requested size: 136.88814pt x 80.29477pt.
+ [12 <./fig/betaSum_rand_lda.pdf> <./fig/betaSum_purity_lda.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./fig/betaSum_purity_lda.pdf): PDF incl
+usion: multiple pdfs with page group included in a single page
+> <./fig/betaSum_rand_umm1.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./fig/betaSum_rand_umm1.pdf): PDF inclu
+sion: multiple pdfs with page group included in a single page
+> <./fig/betaSum_purity_umm1.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./fig/betaSum_purity_umm1.pdf): PDF inc
+lusion: multiple pdfs with page group included in a single page
+> <./fig/betaSum_rand_umm2.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./fig/betaSum_rand_umm2.pdf): PDF inclu
+sion: multiple pdfs with page group included in a single page
+> <./fig/betaSum_purity_umm2.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./fig/betaSum_purity_umm2.pdf): PDF inc
+lusion: multiple pdfs with page group included in a single page
+>] <fig/rand_k0_comp.pdf, id=232, 317.69891pt x 213.78821pt>
+File: fig/rand_k0_comp.pdf Graphic file (type pdf)
+
+<use fig/rand_k0_comp.pdf>
+Package pdftex.def Info: fig/rand_k0_comp.pdf used on input line 542.
 (pdftex.def)             Requested size: 136.88814pt x 92.11633pt.
 
-<purity_k0_comp.pdf, id=189, 329.74391pt x 213.05647pt>
-File: purity_k0_comp.pdf Graphic file (type pdf)
+<fig/purity_k0_comp.pdf, id=233, 329.74391pt x 213.05647pt>
+File: fig/purity_k0_comp.pdf Graphic file (type pdf)
 
-<use purity_k0_comp.pdf>
-Package pdftex.def Info: purity_k0_comp.pdf used on input line 507.
+<use fig/purity_k0_comp.pdf>
+Package pdftex.def Info: fig/purity_k0_comp.pdf used on input line 547.
 (pdftex.def)             Requested size: 136.88814pt x 88.4493pt.
- [12 <./rand_comp.pdf> <./purity_comp.pdf
 
-pdfTeX warning: /usr/bin/pdflatex (file ./purity_comp.pdf): PDF inclusion: mult
-iple pdfs with page group included in a single page
-> <./rand_k0_comp.pdf
+<fig/map_comp.pdf, id=234, 501.38036pt x 289.83432pt>
+File: fig/map_comp.pdf Graphic file (type pdf)
+ <use fig/map_comp.pdf>
+Package pdftex.def Info: fig/map_comp.pdf used on input line 557.
+(pdftex.def)             Requested size: 136.88814pt x 79.12753pt.
 
-pdfTeX warning: /usr/bin/pdflatex (file ./rand_k0_comp.pdf): PDF inclusion: mul
+<fig/map_k0_comp.pdf, id=235, 255.9707pt x 170.14165pt>
+File: fig/map_k0_comp.pdf Graphic file (type pdf)
+
+<use fig/map_k0_comp.pdf>
+Package pdftex.def Info: fig/map_k0_comp.pdf used on input line 562.
+(pdftex.def)             Requested size: 136.88814pt x 90.98723pt.
+
+<fig/rprec_comp.pdf, id=236, 502.85948pt x 293.60138pt>
+File: fig/rprec_comp.pdf Graphic file (type pdf)
+
+<use fig/rprec_comp.pdf>
+Package pdftex.def Info: fig/rprec_comp.pdf used on input line 571.
+(pdftex.def)             Requested size: 136.88814pt x 79.92302pt.
+
+<fig/rprec_k0_comp.pdf, id=237, 255.98035pt x 170.12808pt>
+File: fig/rprec_k0_comp.pdf Graphic file (type pdf)
+
+<use fig/rprec_k0_comp.pdf>
+Package pdftex.def Info: fig/rprec_k0_comp.pdf used on input line 576.
+(pdftex.def)             Requested size: 136.88814pt x 90.97997pt.
+
+<fig/bpref_comp.pdf, id=238, 502.8932pt x 273.27245pt>
+File: fig/bpref_comp.pdf Graphic file (type pdf)
+
+<use fig/bpref_comp.pdf>
+Package pdftex.def Info: fig/bpref_comp.pdf used on input line 585.
+(pdftex.def)             Requested size: 136.88814pt x 74.385pt.
+
+<fig/bpref_k0_comp.pdf, id=239, 255.98035pt x 170.14165pt>
+File: fig/bpref_k0_comp.pdf Graphic file (type pdf)
+
+<use fig/bpref_k0_comp.pdf>
+Package pdftex.def Info: fig/bpref_k0_comp.pdf used on input line 590.
+(pdftex.def)             Requested size: 136.88814pt x 90.98723pt.
+ [13 <./fig/rand_comp.pdf> <./fig/purity_comp.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./fig/purity_comp.pdf): PDF inclusion: 
+multiple pdfs with page group included in a single page
+> <./fig/rand_k0_comp.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./fig/rand_k0_comp.pdf): PDF inclusion:
+ multiple pdfs with page group included in a single page
+> <./fig/purity_k0_comp.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./fig/purity_k0_comp.pdf): PDF inclusio
+n: multiple pdfs with page group included in a single page
+> <./fig/map_comp.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./fig/map_comp.pdf): PDF inclusion: mul
 tiple pdfs with page group included in a single page
-> <./purity_k0_comp.pdf
+> <./fig/map_k0_comp.pdf
 
-pdfTeX warning: /usr/bin/pdflatex (file ./purity_k0_comp.pdf): PDF inclusion: m
+pdfTeX warning: /usr/bin/pdflatex (file ./fig/map_k0_comp.pdf): PDF inclusion: 
+multiple pdfs with page group included in a single page
+>] [14 <./fig/rprec_comp.pdf> <./fig/rprec_k0_comp.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./fig/rprec_k0_comp.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
+> <./fig/bpref_comp.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./fig/bpref_comp.pdf): PDF inclusion: m
 ultiple pdfs with page group included in a single page
->] [13] (./template.aux)
+> <./fig/bpref_k0_comp.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./fig/bpref_k0_comp.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
+>] [15] (./template.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4623 strings out of 494977
- 64865 string characters out of 6180183
- 158393 words of memory out of 5000000
- 7767 multiletter control sequences out of 15000+600000
+ 4684 strings out of 494977
+ 66567 string characters out of 6180183
+ 158448 words of memory out of 5000000
+ 7816 multiletter control sequences out of 15000+600000
  13896 words of font info for 52 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  38i,26n,26p,906b,477s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -603,10 +767,10 @@ s/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type
 1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
 c/amsfonts/cm/cmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
 nts/symbols/msbm10.pfb>
-Output written on template.pdf (13 pages, 483309 bytes).
+Output written on template.pdf (15 pages, 599258 bytes).
 PDF statistics:
- 324 PDF objects out of 1000 (max. 8388607)
- 220 compressed objects within 3 object streams
+ 463 PDF objects out of 1000 (max. 8388607)
+ 311 compressed objects within 4 object streams
  0 named destinations out of 1000 (max. 500000)
- 81 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 136 words of extra memory for PDF output out of 10000 (max. 10000000)
 
