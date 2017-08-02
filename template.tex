@@ -65,7 +65,7 @@ grestore
 %
 \begin{document}
 
-\title{A comprehensive performance analysis of various Information Retrieval algorithms for treccar experiments%\thanks{Grants or other notes
+\title{A Comprehensive Performance Analysis of Various Information Retrieval Algorithms for TRECCAR Problem%\thanks{Grants or other notes
 %about the article that should go on the front page should be
 %placed here. General acknowledgments should be placed at the end of the article.}
 }
@@ -79,26 +79,24 @@ grestore
 
 %\authorrunning{Short form of author list} % if too long for running head
 
-\institute{F. Author \at
-              first address \\
-              Tel.: +123-45-678910\\
-              Fax: +123-45-678910\\
-              \email{fauthor@example.com}           %  \\
+\institute{Sumanta Kashyapi \at
+              University of New Hampshire \\
+              \email{sumantakashyapi@gmail.com}           %  \\
 %             \emph{Present address:} of F. Author  %  if needed
            \and
-           S. Author \at
-              second address
+           Dr. Laura Dietz \at
+              University of New Hampshire
 }
 
-\date{Received: date / Accepted: date}
+% \date{Received: date / Accepted: date}
 % The correct dates will be entered by the editor
 
 
 \maketitle
 
 \begin{abstract}
-Abstract goes here with purpose, approaches and results.
-\keywords{Topic modeling \and LDA \and Information retreival \and KMeans clustering \and Unigram topic model}
+A large set of randomly chosen Wikipedia articles are modified into a well-documented corpus. TRECCAR problem is to assign paragraphs contained in each article in that corpus to it's appropriate sections. This paper consists of implementation details of three major information retreival algorithms; LDA topic modeling, KMeans and Unigram topic modeling and their performance analysis over the TRECCAR problem. An evaluation framework is developed to measure performance regarding quality of clusterings and assignments. Obtained results are compared based on various measures calculated by the evaulation framework.
+\keywords{Topic modeling \and LDA \and Information retreival \and KMeans clustering \and Unigram topic model \and TRECCAR}
 % \PACS{PACS code1 \and PACS code2 \and more}
 % \subclass{MSC code1 \and MSC code2 \and more}
 \end{abstract}
@@ -111,16 +109,102 @@ $(P_{mn} \mid n \in \mathbb{N}, n \leq N_m)$ relevant to the article. For each a
 An evaluation framework is developed to quantify this comparison which in turn can be utilized to determine which categorization are better than the rest.
 Various categorization and classification algorithms can be used for the assignment task and for each approach we can measure it's effectiveness using the evaluation framework. For the experiments described here, we have used LDA topic modeling, KMeans, Unigram topic modeling and some of their variations. Our aim will be to identify which components of these algorithms are responsible for good results from the performance measures calculated by our evaluation framework. We will also carry out a feasibility study of a hybrid approach consisting of the best components for this task.
 
-
 \section{LDA topic modeling}
 \label{sec:lda}
-LDA theory and mallet implementation details goes here.
-\paragraph{Implementation} mallet implementation details.
+Latent Dirichlet Allocation or LDA is a generative probabilistic model whose application in the field of infromation retreival (specally in NLP) is pioneered by Dr. David Blei with his LDA topic model approach. This approach assumes that every document follows a random mixture of latent topics where each topic is a distribution over the vocabulary of the corpus. Documents are created by a generative process described by algorithm .
+\begin{algorithm}[htp]
+\label{algo:ldaGen}
+ \SetAlgoLined\DontPrintSemicolon
+ \For{$k = 1$ to K}{
+  $\phi^(k) \sim Dirichlet(\beta)$\;
+ }
+ \ForEach{document $d \in D$}{
+  $\theta_d \sim Dirichlet(\alpha)$\;
+  \ForEach{word $w_i \in d$}{
+   $z_i \sim \theta_d$\;
+   $w_i \sim \phi^{(z_i)}$\;
+  }
+ }
+ \caption{LDA generative process}
+\end{algorithm}
+This means if we can learn $\theta, \phi$ and z from our given data w and a reasonable guess of $\alpha$ and $\beta$ then we could know the most probable words that associates it's underlying latent topics. This means we would have an idea of the latent topics their respective proportion in a document which generated the document in the first place. Formally we want to reverse the generative process and want to learn the posterior distribution of the latent variables which is as follows:
+\begin{equation}
+p(\theta, \phi, z \mid w, \alpha, \beta) = \frac{p(\theta, \phi, z, w \mid \alpha, \beta)}{p(w \mid \alpha, \beta)}
+\end{equation}
+As this equation is computationally intractable, other approximation strategies are used to get close to the actual values. Gibbs sampling method proved to be very effective in this process. It is a member from the Markov Chain Monte Carlo (MCMC) set of algorithms. The LDA equation that we will solve using the Gibbs sampling is as follows (for more details on the derivation please refer ):
+\begin{equation}
+p(z_i \mid z^{(-i)}, w) \propto (n_{d,k}^{(-i)} + \alpha_k) \frac{n_{k,w}^{(-i)}+\beta_w}{\sum_{w'} n_{k,w'}{(-i)}+\beta_{w'}}
+\end{equation}
+Gibbs sampling algorithm is implemented using the algorithm \ref{algo:gibbs}.
+\begin{algorithm}[htp]
+\label{algo:gibbs}
+ \SetAlgoLined\DontPrintSemicolon
+ Initialize z\;
+ \ForEach{iteration}{
+  \For{$i = 0$ to $N-1$}{
+   $word \leftarrow w[i]$\;
+   $topic \leftarrow z[i]$\;
+   $n_{d, topic} -= 1, n_{word, topic} -= 1, n_{topic} -= 1$\;
+   \For{$k = 0$ to $K-1$}{
+    $p(z=k \mid \cdot) = (n_{d,k} + \alpha_k) \frac{n_{k,w}+\beta_w}{n_k+\beta \times W}$\;
+   }
+   samplw topic from $p(z \mid \cdot)$\;
+   $z[i] \leftarrow topic$\;
+   $n_{d, topic} += 1, n_{word, topic} += 1, n_{topic} += 1$\;
+  }
+ }
+ return $z, n_{d,k}, n_{k,w}, n_k$\;
+ \caption{Gibbs sampling for LDA algorithm}
+\end{algorithm}
+\subsection{Modifications and implementation details for assignment task}
+We took the basic implementation of LDA algorithm (cc.mallet.topics.SimpleLDA) from mallet API and customized it according to our requirements. For example, $SimpleLDA$ implements $typeTopicCounts$, the data structure that stores the number of times one type/token is assigned to one topic, is implemented as a simple 2D integer array. However, the topic inferencer for LDA (cc.mallet.topics.TopicInferencer) implements the same data structure in a different way to save space. For each type/token the count of topic assignment is stored in a single integer object using bitshift operations. Therefore we had to implement the same strategy in $SimpleLDA$ in order to make it compatible with $TopicInferencer$.
 \section{KMeans algorithm}
 \label{sec:kmeans}
-KMeans theory and mallet implementation details goes here.
-\paragraph{Implementation} mallet implementation details.
-\section{Unigram topic model}
+KMeans is a simple bt effective unsupervised clustering algorithm. It works by repeatedly calculating and placing centroids for each cluster until the centroids do not move. First, for each cluster is strategically placed in the feature space so that we have a better chance at acheiving global optima. Then using some metric function, a cluster is assigned to every data points for which it's centroid is nearest to the data point. After all the data points are assigned some cluster, centroids are recalculated using the same metric function. This loop continues until centroids do not move and the algorithm converges. Formally, the algorithm tries to minimize the below objective function.
+\begin{equation}
+\label{eq:km}
+J = \sum_{j=1}^k \sum_{i=1}^n \mid \mid x_i^{(j)} - c_j \mid \mid^2
+\end{equation}
+\\where $\mid \mid x_i^{(j)} - c_j \mid \mid^2$ is the metric distance between cluster $c_j$ and data element $x_i^{(j)}$
+The basic algorithm that any typical KMeans implementation will follow is presented in algorithm \ref{algo:kmeans}. Initializing the centroids is an important step in the algorithm because based on the initial guess our final results and also the number of iterations needed to reach that result may vary.
+\begin{algorithm}[htp]
+\label{algo:kmeans}
+ \SetAlgoLined\DontPrintSemicolon
+ \KwData{paragraph list, no. of clusters}
+ \KwResult{cluster of paragraphs}
+ initialize centroids/cluster means $m_1, m_2, ... , m_k$\;
+ \While{changes in centroids}{
+  \For{each $x_i$ where $i = 1$ to $n$}{
+   assign $x_i$ to the cluster $m_j$ having $\min \mid \mid x_i^{(j)} - m_j \mid \mid^2$\;
+  }
+  \For{each $m_j$ where $j = 1$ to $k$}{
+   Replace $m_j$ with the mean of all of the $x_i^{(j)}$ in cluster $j$\;
+  }
+ }
+ \caption{KMeans algorithm}
+\end{algorithm}
+\subsection{Modifications and implementation details for assignment task}
+Using KMeans algorithm in our experiments proved to be quite straight forward. We simply imported the necessary packages (cc.mallet.cluster) from mallet API and called up necessary methods without any modifications. However, we encountered certain issues for which we had to modify our existing codes for topic model to accomodate KMeans. Topic models in mallet are implemented in such a way that it internally converts the data elements (Instance objects) into a sequence of index, value pairs called $SparseVector$. Whereas in case of KMeans, it works with sequence of feature counts or $FeatureSequence$. This conversion along with all the pre-processing tasks are carried out by a chain of processing elements known as pipes (cc.mallet.pipe) and are placed inside $buildPipe()$ method of $SingleRun$ class. To take account for the different input format required by KMeans algorithm, we had to modify $buildPipe()$ so that it can provide pre-processed data item in proper format. It is to be noted that, this difference is only related to representation of data items which do not interfere with actual data values and hence results obtained from both class of algorithms remains comparable. \\
+Although we used almost unmodified version of mallet KMeans algorithm for clustering the paragraphs, we still had to develop our own strategy to assign secions to these clustered paragraphs. The algorithm is implemented in $assignUsingKMeans()$ to take care of the assignment task.
+\begin{algorithm}[htp]
+\label{algo:kmeansAssign}
+ \SetAlgoLined\DontPrintSemicolon
+ \KwData{kmeans object, paragraph list, section ID list}
+ \KwResult{section ID to list of para IDs mapping}
+ \ForEach{section $sec$ in list of sections}{
+  \ForEach{cluster mean $cm$ in list of cluster means}{
+   $secMatrix[sec][cm] = metric(sec,cm)$\;
+  }
+ }
+ \ForEach{paragraph $p$ in list of paragraphs}{
+  \ForEach{cluster mean $cm$ in list of cluster means}{
+   $paraMatrix[p][cm] = metric(p,cm)$\;
+  }
+ }
+ call $matrixAssignment()$ with $secMatrix$ and $paraMatrix$\;
+ \caption{Assignment algorithm for KMeans}
+\end{algorithm}
+\section{Unigram topic model and it's implementation}
 \label{sec:umm}
 In his paper, author Blei describes how his LDA model extended from the simple Unigram mixture model. According to the unigram mixture model the probability of a document $p(\mathbf{w})$ in a corpus can be expressed as:
 $$ p(\mathbf{w}) = \sum_z p(z) \prod_{n=1}^N p(w_n \mid z)$$
@@ -162,15 +246,29 @@ p'(m_i \mid \overrightarrow{m_{-i}}, \overrightarrow{w}) & \propto
 While implementing unigram model we computed $ p'(m_i)$ in log space to avoid underflows. Also instead of directly sampling from $ p'$, we used the smoothed version (Jelinek-Mercer smoothing) $ p''$ which is calculated as:
 $$ p''(m_i) = \lambda p'(m_i) + (1- \lambda) $$
 Here $ \lambda$ is inverse temperature which controls randomness during sampling. In other words, low $ \lambda$ leads to more \textit{exploration} from wide range of topics and high $ \lambda$ will \textit{exploit} from narrow range of topics. The topic inferencer for unigram model, which is used during the section to paragraph assignment, performs similar calculations except, instead of paragraphs in corpus it takes the text content related to section headings.
-\paragraph{Implementaion} implementation details.
+\subsection{Unigram topic inferencer}
+We followed algorithm \ref{algo:umminf} while developing Unigram topic inferencer (... playground.topics.UnigramTopicInferencer). After developing the training model for Unigram topic model, we had to develop an topic inferencer which would be compatible with existing evaluation framework. The method signature had to be same as the LDA inferencer but internally it had to calculate topic probabilties using Unigram model.
+\begin{algorithm}[htp]
+\label{algo:umminf}
+ \KwData{Section data}
+ \KwResult{Inferred topic scores}
+ \For{each topic k=1 to $numTopics$}{
+  \For{each token t=1 to $numTokens$}{
+   calculate $sumLog_{k} += \log \bigg( n_{k,-t}^{(v)}+\beta \bigg)$\; \tcc{$n_{k,-t}^{(v)}$ is represented by $typeTopicCounts[v][k]$ where v is the type retrieved from vocabulary at token position t}
+  }
+  calculate $topicScores[k] = \exp \Bigg[ sumLog_{k} - numTokens \dot{\log \bigg( \sum_{v=1}^V n_{k,-t}^{(v)}+\beta Sum \bigg)} \Bigg]$\; \tcc{$\sum_{v=1}^V n_{k,-t}^{(v)}$ is implemented in $tokensPerTopic[k]$}
+ }
+ return normalized $topicScores$\;
+ \caption{Unigram topic inferencer algorithm}
+\end{algorithm}
+
 \section{Evaluation Framework}
 \label{sec:3}
 Before we try to experiment with different combinations of topic modeling and clustering modules with our treccar corpus, we must have a reliable framework to compare our results. A robust evaluation framework for our experiments is a key element which will help us to be confident about our findings. We will evaluate two aspects of our results. First, we have a set of measures which will determine the accuracy of the clustering that we have done with our set of data elements, which is in this case a set of paragraph objects identified by unique paragraph ids. Note that while measuring how good our clusters are compared to that of the ground truth, we do not utilize the assignment mappings or more precisely the section objects under which each cluster is mapped. In our second set of measure we do just that by comparing our section to paragraph mappings with that of ground truth. 
 \subsection{Clustering measures}
 \label{sec:4}
 In our current evaluation framework we are using two basic statistical measures for evaluating our clustering results.
-\subsubsection{Adjusted RAND index}
-\label{sec:5}
+\paragraph{Adjusted RAND index}
 RAND index is a popular statistical measure used to quantify the similarity between two clusterings done on the same dataset. In our case those two clusterings are resulting clusters from our designed model and the clusters made according to the ground truth file. Although RAND index is often associated with the accuracy of the results but in our case we are using it without the class labels. Typically RAND index,R is calculated as:
 \begin{equation}
 R = \frac{a+b}{a+b+c+d} = \frac{a+b}{{{n}\choose{2}}} 
@@ -185,13 +283,50 @@ ARI = \frac{\sum_{ij}{{n_{ij}}\choose{2}}-[\sum_{i}{a_{i}\choose{2}}\sum_{j}{b_{
 \\where $n_{ij}=$ contingency table values from $i$th row and $j$th column
 \\$a_{i}=$ contingency table $i$th row sum
 \\$b_{j}=$ contingency table $j$th column sum
-\subsubsection{Purity}
-Purity theory goes here
+\paragraph{Purity}
+Purity is a simple clustering measure which is used as an external evaluation criterion to measure quality of the clustering. While caculating purity, we basically measure the accuracy of the assignment if we assign each cluster to the most frequent class in that cluster. Hence we a high purity means that most of the data elements inside each cluster agrees upon the class labels. Purity measure is calculated using the equation \ref{eq:pty}.
+\begin{equation}
+\label{eq:pty}
+Purity(M,C) = \frac{1}{N} \sum_{k} \max_{j} \mid m_k \cap c_j \mid
+\end{equation}
+\\where $M = \{m_1, m_2, m_3, ... , m_k\}$ set of clusters
+\\$C = \{c_1, c_2, c_3, ... , c_J\}$ set of classes according to grund truth
+\\$N =$ total number of data elements (paragraphs)
 \subsection{Assignment measures}
 \label{sec:6}
 After we finish clustering the paragraphs and assign them with their respective cluster labels, we have to assign them to sections. The quality of the section to paragraph assignment is measured using an existing framework, TREC eval, which is designed specifically for this set of problems where we have to evaluate rankings of retrieved information.
-\paragraph{Different measures of TREC eval} theory and usage of numq measures, map and rprec with background of precision
-
+\paragraph{Different measures of TREC eval} Table presents a quick summary of all the measures calculated by the TREC eval tool. We will mainly consider num\_rel\_ret, MAP, Rprec and bpref measures for our experiments.
+\begin{table}
+% table caption is above the table
+\caption{TREC eval measures}
+\label{tab:treceval}       % Give a unique label
+% For LaTeX tables use
+\begin{tabular}{l|l}
+\hline\noalign{\smallskip}
+Measure & Purpose  \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+num\_ret & Total number of documents retrieved over all queries \\
+\hline
+num\_rel & Total number of relevant documents over all queries \\
+\hline
+num\_rel\_ret & Total number of relevant documents retrieved over all queries \\
+\hline
+map & Mean Average Precision (MAP) \\
+\hline
+gm\_ap & Average Precision. Geometric Mean, $q\_score=log(MAX(map,.00001))$ \\
+\hline
+R-prec & R-Precision (Precision after R (= num-rel for topic) documents retrieved) \\
+\hline
+bpref & Binary Preference, top R judged nonrel \\
+\hline
+recip\_rank & Reciprical rank of top relevant document \\
+\hline
+ircl\_prn.[num] & Interpolated Recall - Precision Averages at [num] recall \\
+\hline
+P[d] & Precision after [d] docs retrieved \\
+\noalign{\smallskip}\hline
+\end{tabular}
+\end{table}
 \section{Implementation details}
 \label{sec:implementation}
 The algorithms, models and evaluation framework are developed in java. Mallet API has been used for basic text retrieval tasks and as a starting point for developing all the models used in the experiments.
@@ -374,7 +509,8 @@ This class is generated for each page and holds the clusters of paragraph ids ($
 \paragraph{MeasureExperiment: }
 This class calculates the cluatering measures for a single page. Currently it calculates two measures, adjusted RAND index ($calculateRANDPerPage$) and Purity ($calculatePurityPerPage$) from the contingency matrix formed using the algorithm \ref{algo:contMat}. Later on in $SingleRun$ these values are used to get the mean and standard error for the current experiment.
 
-\subsection{Sequence of execution}
+\subsection{Brief sequence of execution}
+We start the evaluation from $RunExperiment$ with necessary arguments. It contains the top loop that calls $SingleRun$ for each combination of the arguments provided. Inside the $SingleRun$ one complete execution happens inside it's $runExperiment()$ method. First of all, data elements such as list of paragraphs, sections, ground truth mappings are converted to $InstanceList$s which is recognized by the mallet API. For each article in the corpus, $modelAndAssign()$ method is called which in turn calls $assignUsing[model]$ based on the modelchosen in $RunExperiment$. For each page, we obtain a $ResultForPage$ object which contains clusters and section to paragraph mappings. These result objects are handled by $MeasureExperiment$ and we get the final evaluation results which are stored for later analysis. 
 
 \section{Experimental results}
 \label{sec:results}
@@ -428,6 +564,7 @@ NE = No Effect
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=0.9\textwidth]{fig/rand_k0iter_umm.pdf}
+        \label{fig:rn_it_umm}
         \caption{Minimum no. of iterations of Unigram topic modeling for RAND}
     \end{minipage}\hfill
     \begin{minipage}{0.45\textwidth}
@@ -517,7 +654,6 @@ NE = No Effect
     \end{minipage}
 \end{figure}
 
-\subsection{KMeans clustering results} plots go here
 \subsection{Comparison of algorithms with varying k} After we have decided the optimum values of hyperparameters for all the algorithms, we compare the measures from different algorithms by varying $k$ and also at $k = $true no. of sections. This will give us an idea about the effectiveness of each algorithm for the task.
 
 \begin{figure}
@@ -593,16 +729,17 @@ NE = No Effect
 \end{figure}
 
 Figure \ref{fig:cl_cmp} to \ref{fig:clk0_cmp} presents the comparison of 3 different algorithms based on clustering measures. Figure \ref{fig:mp_cmp} to \ref{fig:bp_cmp} presents the same comparison based on treceval measures.
-\subsection{Comparison of results with variations of algo} plots go here
-\subsection{Difficulty analysis of the corpus} plots go here
+% \subsection{Comparison of results with variations of algo} plots go here
 
 \section{Analysis of results}
 In previous section we have presented results from three different implementation of clustering and assignment models which are LDA topic modeling, KMeans clustering and Unigram mixture model. Based on these results we can gain following insights in context of our specific experimental setup.
 \paragraph{} From RAND index comparisons in Figure \ref{fig:cl_cmp} and \ref{fig:clk0_cmp} it becomes evident that in terms of cluster similarity with that from the ground truth, Unigram model performs better than the rest. Although the purity comparison shows that KMeans algorithm constantly achieves high purity for high k value but we have to remember that it only means that the clusters are more specific or pure and does not signify anything regarding the overall quality of the clustering.
-\paragraph{} 
+\paragraph{} While trying to map section IDs to paragraph clusters using KMeans algorithm, we found around 2.5\% of the section IDs are not considered for treceval measures. Consequently we obtained $num_q$ measure for KMeans as 1489 instead of 1526. The reason behind this is for those section IDs all the words/tokens are removed during stop word removal phase of pre-processing. So while measuring their metric distances from cluster means, a NaN is returned. This does not happen with topic modeling because according to the implementation topic probabilities are influenced by tokens of an instance. If an instance has an empty token list then topic probabilities are not influenced at all which means each topic has same probability to be picked for that instance. As random assignment of topics like this is valid in topic modeling, we get those sections in our final results which is not the case with KMeans.
+\paragraph{} The iteration experiments done with Unigram model is interesting because according to the result (Figure \ref{fig:rn_it_umm}) it is clear to us that smoothing over pure Unigram topic probabilities degrades it's performance. This explains the sudden jump of smoothed version of Unigram model from close to 0 RAND index to it's no-smoothing version when number of iterations reaches 11. The smoothed UMM is implemented in such a way that it starts with $\lambda = 0.0$ or maximum smoothing (minimum contribution from UMM) and after each equal number of iterations the smoothing factor   $ \lambda$ increases 0.1 until it reaches 1.0 (pure UMM). For no. of iterations upto 10, $ \lambda$ could not reach 1.0 and we receive very low RAND index. For iterations more than 10, $ \lambda$ reaches 1.0 at the end and we get RAND measure close to that of it's unsmoothed version. Another point worth noting here is that pure UMM seems to converge only after it's second iteration.
+\paragraph{} Provided the true number of sections as the value of k, it is found that LDA topic models performs slightly better than other algorithms based on all treceval measures shown here (Figures ). This also shows that performing well in clustering tasks (Unigram model) does not guarantee success in assignment tasks.
 
-\section{Future scope} future scope goes here.
-\section{Conclusion} conclude the paper.
+\section{Conclusion and Future scope}
+The experimental setups described here are far from perfect. More thorough investigation is needed to figure out the poor performance of all algorithms in assignment tasks and the underlying reason behind the success of Unigram model in clustering tasks over LDA despite being it's predecessor. Other than that, there are so many interesting directions one can follow from the results we already obtained here. The experiments presented in this paper basically focuses on performance anylysis of various algorithms on a page-by-page basis of the corpus. The next step would be to separate the corpus based on how difficult it is for a specific algorithm to achieve a good measure. This kind of difficulty analysis may lead to key insights into suitability of a particular algorithm for assignment and clustering tasks. Instead of assigning paragraphs to sections for each page, some quick modification to the evaluation framework will allow us to measure performance of these algorithms while assigning paragraphs to pages. This may allow the models to have more margin for error and hence would be easier to compare them. Also this approach will allow us to include section IDs as part of page IDs and reduce the chances of getting empty Feature sequence or Vectors which happened to be a problem we faced in our experiments.
 %\begin{acknowledgements}
 %If you'd like to thank anyone, place your comments here
 %and remove the percent signs.
